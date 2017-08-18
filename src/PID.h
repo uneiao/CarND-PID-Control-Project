@@ -12,10 +12,24 @@ public:
 
   /*
   * Coefficients
-  */ 
+  */
   double Kp;
   double Ki;
   double Kd;
+
+  int current_round;
+  int cur_p_idx;
+  int max_round;
+  double tol;
+  double best_err;
+  bool tuned;
+  double dKp;
+  double dKi;
+  double dKd;
+  int sub_round;
+  double acc_err;
+  int acc_n;
+  int state;
 
   /*
   * Constructor
@@ -41,6 +55,10 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+
+  void Twiddle(double err);
+  double Speed(double sp);
 };
 
 #endif /* PID_H */
